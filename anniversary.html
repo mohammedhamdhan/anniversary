@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Happy Anniversary, Messa ❤️</title>
+  <title>Happy Anniversary, my babyyyyy ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -13,7 +16,7 @@
     }
 
     body {
-      font-family: 'Georgia', 'Palatino', 'Times New Roman', serif;
+      font-family: 'Cormorant Garamond', 'Georgia', serif;
       background: #0a0a0f;
       color: #fff;
       min-height: 100vh;
@@ -39,6 +42,17 @@
       opacity: 1;
     }
 
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 20% 30%, rgba(255, 182, 193, 0.08) 0%, transparent 40%),
+                  radial-gradient(circle at 80% 70%, rgba(255, 215, 230, 0.06) 0%, transparent 40%),
+                  radial-gradient(circle at 50% 50%, rgba(255, 192, 203, 0.05) 0%, transparent 50%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
     #photoBackground {
       position: fixed;
       inset: 0;
@@ -49,15 +63,32 @@
     .photo-frame {
       position: absolute;
       background: #fefefe;
-      padding: 12px 12px 45px 12px;
+      padding: 12px 12px 55px 12px;
       box-shadow:
         0 10px 30px rgba(0, 0, 0, 0.4),
         0 1px 2px rgba(0, 0, 0, 0.2),
         inset 0 0 1px rgba(0, 0, 0, 0.1);
       filter: brightness(0.85);
       opacity: 1;
-      transition: opacity 1.5s ease-out, transform 1.5s ease-out;
+      transition: opacity 1.5s ease-out, transform 1.5s ease-out 0s, filter 0.4s ease, box-shadow 0.4s ease;
       will-change: opacity, transform;
+      cursor: pointer;
+      pointer-events: auto;
+    }
+
+    .photo-frame:hover {
+      filter: brightness(1) drop-shadow(0 0 20px rgba(255, 182, 193, 0.5));
+      transform: scale(1.08) rotate(0deg) !important;
+      box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5),
+        0 0 30px rgba(255, 182, 193, 0.3),
+        inset 0 0 1px rgba(0, 0, 0, 0.1);
+      z-index: 100;
+    }
+
+    .photo-frame:hover .photo-caption {
+      opacity: 1;
+      color: #d4698f;
     }
 
     .photo-frame.hidden-initial {
@@ -66,7 +97,21 @@
     }
 
     .photo-frame.visible {
-      opacity: 0.75;
+      opacity: 0.8;
+    }
+
+    .photo-caption {
+      position: absolute;
+      bottom: 10px;
+      left: 12px;
+      right: 12px;
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 17px;
+      color: #555;
+      opacity: 0.65;
+      transition: opacity 0.3s ease, color 0.3s ease;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
     }
 
     .photo-frame::after {
@@ -177,33 +222,55 @@
     }
 
     #startButton {
-      padding: 18px 42px;
+      padding: 20px 50px;
       border-radius: 50px;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-      font-size: 1.15rem;
-      font-weight: 500;
+      border: 2px solid rgba(255, 192, 203, 0.4);
+      font-size: 1.3rem;
+      font-weight: 400;
       cursor: pointer;
       background: linear-gradient(135deg, #d4698f 0%, #e89bb5 100%);
       color: #fff;
       box-shadow:
-        0 8px 20px rgba(212, 105, 143, 0.4),
-        0 2px 4px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
-      font-family: 'Georgia', serif;
-      letter-spacing: 0.5px;
-      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        0 10px 30px rgba(212, 105, 143, 0.5),
+        0 2px 8px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      transition: all 0.4s ease;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #startButton::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+
+    #startButton:hover::before {
+      width: 300px;
+      height: 300px;
     }
 
     #startButton:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px) scale(1.05);
       box-shadow:
-        0 12px 28px rgba(212, 105, 143, 0.5),
-        0 4px 8px rgba(0, 0, 0, 0.25);
+        0 15px 40px rgba(212, 105, 143, 0.6),
+        0 5px 15px rgba(0, 0, 0, 0.3);
       background: linear-gradient(135deg, #e0779d 0%, #f0a5c0 100%);
+      border-color: rgba(255, 192, 203, 0.6);
     }
 
     #startButton:active {
-      transform: translateY(0);
+      transform: translateY(-1px) scale(1.02);
     }
 
     .hidden {
@@ -318,6 +385,35 @@
       }
     }
 
+    .bokeh {
+      position: fixed;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 192, 203, 0.4) 0%, transparent 70%);
+      pointer-events: none;
+      animation: bokehFloat 15s ease-in-out infinite;
+      filter: blur(8px);
+      z-index: 1;
+    }
+
+    @keyframes bokehFloat {
+      0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+      }
+      25% {
+        transform: translate(20px, -30px) scale(1.2);
+        opacity: 0.5;
+      }
+      50% {
+        transform: translate(-15px, -50px) scale(0.9);
+        opacity: 0.4;
+      }
+      75% {
+        transform: translate(25px, -20px) scale(1.1);
+        opacity: 0.6;
+      }
+    }
+
     #coupleAnimation {
       position: fixed;
       left: 50%;
@@ -333,13 +429,14 @@
     }
 
     #coupleAnimation .names {
-      font-size: 1.3rem;
-      letter-spacing: 1.5px;
-      margin-top: 18px;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
+      margin-top: 20px;
       font-weight: 400;
       color: #ffd9e6;
-      font-family: 'Georgia', serif;
+      font-family: 'Playfair Display', serif;
       font-style: italic;
+      text-shadow: 0 2px 8px rgba(255, 105, 180, 0.4);
     }
 
     @keyframes couplePop {
@@ -386,32 +483,62 @@
     }
 
     #messageCard h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 2.2rem;
+      margin-bottom: 24px;
       font-weight: 500;
       color: #ffd9e6;
-      font-family: 'Georgia', serif;
+      font-family: 'Playfair Display', 'Georgia', serif;
       line-height: 1.3;
+      text-shadow: 0 2px 8px rgba(255, 105, 180, 0.3);
     }
 
     #messageCard h1 span {
       white-space: nowrap;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      color: #ffb3d9;
     }
 
     #messageCard p {
-      line-height: 1.75;
-      font-size: 1.05rem;
-      margin-bottom: 16px;
-      color: #f0e6ea;
+      line-height: 1.85;
+      font-size: 1.1rem;
+      margin-bottom: 18px;
+      color: #f5e6ea;
       font-weight: 300;
+      opacity: 0;
+      animation: fadeInText 0.8s ease-out forwards;
+    }
+
+    #messageCard p:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+
+    #messageCard p:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+
+    #messageCard p:nth-child(4) {
+      animation-delay: 0.9s;
+    }
+
+    @keyframes fadeInText {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     #messageCard .signature {
-      margin-top: 24px;
-      font-style: italic;
-      opacity: 0.95;
-      color: #ffd9e6;
-      font-size: 1.1rem;
+      margin-top: 28px;
+      font-family: 'Great Vibes', cursive;
+      opacity: 0;
+      color: #ffb3d9;
+      font-size: 1.4rem;
+      animation: fadeInText 0.8s ease-out 1.2s forwards;
     }
 
     @keyframes messageSlideIn {
@@ -484,23 +611,28 @@
   <div id="photoBackground">
     <div class="photo-frame photo1">
       <img src="photo1.jpeg" alt="" class="photo-img" loading="eager" decoding="async">
+      <div class="photo-caption"></div>
     </div>
     <div class="photo-frame photo2">
       <img src="photo2.jpeg" alt="" class="photo-img" loading="eager" decoding="async">
+      <div class="photo-caption"></div>
     </div>
     <div class="photo-frame photo3">
       <img src="photo3.jpeg" alt="" class="photo-img" loading="eager" decoding="async">
+      <div class="photo-caption"></div>
     </div>
     <div class="photo-frame photo4">
       <img src="photo4.jpeg" alt="" class="photo-img" loading="eager" decoding="async">
+      <div class="photo-caption"></div>
     </div>
   </div>
 
+  <div id="bokehContainer"></div>
   <div id="heartsContainer"></div>
   <div id="floatingHeartsContainer"></div>
 
   <div class="center-screen" id="intro">
-    <button id="startButton">For Messa</button>
+    <button id="startButton">For my babygirl, Messa</button>
   </div>
 
   <script>
@@ -511,27 +643,37 @@
   </script>
 
   <div id="coupleAnimation" class="hidden">
-    <div>💕</div>
+    <div style="animation: heartbeat 1.5s ease-in-out infinite;">💕</div>
     <div class="names">Hamdhan & Messa</div>
   </div>
 
+  <style>
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.1); }
+      20%, 40% { transform: scale(0.95); }
+      50% { transform: scale(1); }
+    }
+  </style>
+
   <div id="messageCard" class="hidden">
-    <h1>Happy 3rd Anniversary, <span>Messa ❤️</span></h1>
+    <h1>Happy 3rd Anniversary, <span>my baby❤️</span></h1>
     <p>
       I love you more than words will ever be able to describe. Thank you for three incredible years of
-      laughter, late-night talks, shared dreams, and all the little moments in between.
+      laughter, all the love you can give, shared dreams, and all the little moments in between.
     </p>
     <p>
       You make my world softer, brighter and so much more beautiful just by being in it. I'm so grateful
-      for every single day with you.
+      for every single day with you. In all my sadness and happiness, you are my constant, my rock, my home.
+      I can't wait to see what the future holds for us.
     </p>
     <p>
       Here's to us, to everything we've been through, and to all the adventures still waiting for us.
-      I can't wait for all the years and memories we've yet to make together.
+      I can't wait for all the years and memories we've yet to make together, to grow old with you <3
     </p>
     <p class="signature">
       With all my love,<br>
-      Hamdhan 🩷
+      Your bb Hamdhan 🩷
     </p>
   </div>
 
@@ -540,12 +682,46 @@
     const intro = document.getElementById("intro");
     const heartsContainer = document.getElementById("heartsContainer");
     const floatingHeartsContainer = document.getElementById("floatingHeartsContainer");
+    const bokehContainer = document.getElementById("bokehContainer");
     const coupleAnimation = document.getElementById("coupleAnimation");
     const messageCard = document.getElementById("messageCard");
     const photoBackground = document.getElementById("photoBackground");
 
     let heartInterval = null;
     let petalInterval = null;
+
+    function createBokeh() {
+      const colors = [
+        'rgba(255, 192, 203, 0.3)',
+        'rgba(255, 182, 193, 0.35)',
+        'rgba(255, 215, 230, 0.25)',
+        'rgba(255, 228, 225, 0.3)',
+        'rgba(255, 240, 245, 0.2)'
+      ];
+
+      for (let i = 0; i < 12; i++) {
+        const bokeh = document.createElement('div');
+        bokeh.classList.add('bokeh');
+
+        const size = 50 + Math.random() * 150;
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const delay = Math.random() * 5;
+        const duration = 10 + Math.random() * 10;
+
+        Object.assign(bokeh.style, {
+          width: size + 'px',
+          height: size + 'px',
+          left: left + '%',
+          top: top + '%',
+          background: `radial-gradient(circle, ${colors[i % colors.length]} 0%, transparent 70%)`,
+          animationDelay: delay + 's',
+          animationDuration: duration + 's'
+        });
+
+        bokehContainer.appendChild(bokeh);
+      }
+    }
 
     function spawnHeart() {
       const heart = document.createElement("span");
@@ -646,6 +822,7 @@
     function startSequence() {
       intro.classList.add("hidden");
 
+      createBokeh();
       createFloatingHearts();
       startHearts();
       startPetals();
@@ -660,7 +837,7 @@
             setTimeout(() => {
               frame.classList.add('visible');
             }, 10);
-          }, index * 250);
+          }, index * 300);
         });
       }, 2000);
 
