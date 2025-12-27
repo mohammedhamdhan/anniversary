@@ -13,6 +13,7 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -25,6 +26,8 @@
       align-items: center;
       justify-content: center;
       position: relative;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body::before {
@@ -74,21 +77,6 @@
       will-change: opacity, transform;
       cursor: pointer;
       pointer-events: auto;
-    }
-
-    .photo-frame:hover {
-      filter: brightness(1) drop-shadow(0 0 20px rgba(255, 182, 193, 0.5));
-      transform: scale(1.08) rotate(0deg) !important;
-      box-shadow:
-        0 15px 40px rgba(0, 0, 0, 0.5),
-        0 0 30px rgba(255, 182, 193, 0.3),
-        inset 0 0 1px rgba(0, 0, 0, 0.1);
-      z-index: 100;
-    }
-
-    .photo-frame:hover .photo-caption {
-      opacity: 1;
-      color: #d4698f;
     }
 
     .photo-frame.hidden-initial {
@@ -253,24 +241,6 @@
       background: rgba(255, 255, 255, 0.3);
       transform: translate(-50%, -50%);
       transition: width 0.6s, height 0.6s;
-    }
-
-    #startButton:hover::before {
-      width: 300px;
-      height: 300px;
-    }
-
-    #startButton:hover {
-      transform: translateY(-4px) scale(1.05);
-      box-shadow:
-        0 15px 40px rgba(212, 105, 143, 0.6),
-        0 5px 15px rgba(0, 0, 0, 0.3);
-      background: linear-gradient(135deg, #e0779d 0%, #f0a5c0 100%);
-      border-color: rgba(255, 192, 203, 0.6);
-    }
-
-    #startButton:active {
-      transform: translateY(-1px) scale(1.02);
     }
 
     .hidden {
@@ -604,6 +574,244 @@
         opacity: 0;
       }
     }
+
+    /* ========== MOBILE RESPONSIVENESS ========== */
+
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto;
+        min-height: 100vh;
+      }
+
+      #photoBackground {
+        filter: none;
+      }
+
+      #messageCard {
+        max-height: 80vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .photo-frame {
+        padding: 10px 10px 45px 10px;
+      }
+
+      .photo-img {
+        width: 130px !important;
+        height: 170px !important;
+      }
+
+      .photo1 {
+        top: 5%;
+        left: 5%;
+      }
+
+      .photo2 {
+        top: 5%;
+        right: 5%;
+      }
+
+      .photo3 {
+        bottom: 25%;
+        left: 5%;
+      }
+
+      .photo4 {
+        bottom: 25%;
+        right: 5%;
+      }
+
+      .photo-caption {
+        font-size: 13px;
+        bottom: 6px;
+      }
+
+      #startButton {
+        padding: 16px 36px;
+        font-size: 1.1rem;
+        letter-spacing: 0.5px;
+      }
+
+      #coupleAnimation {
+        font-size: 3.5rem;
+      }
+
+      #coupleAnimation .names {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+      }
+
+      #messageCard {
+        max-width: 90%;
+        width: 90%;
+        padding: 24px 20px 26px;
+        border-radius: 12px;
+      }
+
+      #messageCard h1 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+      }
+
+      #messageCard h1 span {
+        font-size: 1.8rem;
+      }
+
+      #messageCard p {
+        font-size: 0.95rem;
+        line-height: 1.7;
+        margin-bottom: 14px;
+      }
+
+      #messageCard .signature {
+        font-size: 1.1rem;
+        margin-top: 20px;
+      }
+
+      .heart {
+        font-size: 18px;
+      }
+
+      .floating-heart {
+        font-size: 24px;
+      }
+
+      .bokeh {
+        display: none;
+      }
+
+      .star {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .photo-img {
+        width: 110px !important;
+        height: 145px !important;
+      }
+
+      .photo-frame {
+        padding: 8px 8px 38px 8px;
+      }
+
+      .photo-caption {
+        font-size: 11px;
+        bottom: 4px;
+      }
+
+      #startButton {
+        padding: 14px 30px;
+        font-size: 1rem;
+      }
+
+      #coupleAnimation {
+        font-size: 3rem;
+      }
+
+      #coupleAnimation .names {
+        font-size: 1rem;
+      }
+
+      #messageCard {
+        padding: 20px 16px 22px;
+      }
+
+      #messageCard h1 {
+        font-size: 1.4rem;
+        margin-bottom: 16px;
+      }
+
+      #messageCard h1 span {
+        font-size: 1.6rem;
+      }
+
+      #messageCard p {
+        font-size: 0.9rem;
+        line-height: 1.65;
+      }
+
+      #messageCard .signature {
+        font-size: 1rem;
+      }
+
+      .rose-petal {
+        width: 7px;
+        height: 10px;
+      }
+    }
+
+    /* Hover effects only on non-touch devices */
+    @media (hover: hover) and (pointer: fine) {
+      .photo-frame:hover {
+        filter: brightness(1) drop-shadow(0 0 20px rgba(255, 182, 193, 0.5));
+        transform: scale(1.08) rotate(0deg) !important;
+        box-shadow:
+          0 15px 40px rgba(0, 0, 0, 0.5),
+          0 0 30px rgba(255, 182, 193, 0.3),
+          inset 0 0 1px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+      }
+
+      .photo-frame:hover .photo-caption {
+        opacity: 1;
+        color: #d4698f;
+      }
+
+      #startButton:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      #startButton:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow:
+          0 15px 40px rgba(212, 105, 143, 0.6),
+          0 5px 15px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, #e0779d 0%, #f0a5c0 100%);
+        border-color: rgba(255, 192, 203, 0.6);
+      }
+    }
+
+    /* Touch devices - simpler effects */
+    @media (hover: none) and (pointer: coarse) {
+      .photo-frame {
+        cursor: default;
+      }
+
+      .photo-frame:active {
+        transform: scale(0.98) !important;
+      }
+
+      #startButton:active {
+        transform: scale(0.96);
+      }
+    }
+
+    /* Landscape mode on mobile */
+    @media (max-width: 768px) and (orientation: landscape) {
+      #messageCard {
+        max-height: 70vh;
+      }
+
+      .photo-frame {
+        padding: 8px 8px 35px 8px;
+      }
+
+      .photo-img {
+        width: 100px !important;
+        height: 130px !important;
+      }
+
+      #coupleAnimation {
+        font-size: 2.5rem;
+      }
+
+      #coupleAnimation .names {
+        font-size: 0.9rem;
+      }
+    }
   </style>
 </head>
 
@@ -691,6 +899,9 @@
     let petalInterval = null;
 
     function createBokeh() {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) return; // Skip bokeh on mobile for performance
+
       const colors = [
         'rgba(255, 192, 203, 0.3)',
         'rgba(255, 182, 193, 0.35)',
@@ -747,8 +958,15 @@
     }
 
     function createFloatingHearts() {
+      const isMobile = window.innerWidth <= 768;
       const heartEmojis = ["💗", "💖", "💕", "💓", "💝"];
-      const positions = [
+
+      // Fewer hearts on mobile for better performance
+      const positions = isMobile ? [
+        { top: '15%', left: '10%', delay: 0 },
+        { top: '60%', right: '12%', delay: 2 },
+        { top: '40%', left: '5%', delay: 1 }
+      ] : [
         { top: '15%', left: '10%', delay: 0 },
         { top: '25%', right: '12%', delay: 1.5 },
         { top: '60%', left: '8%', delay: 3 },
@@ -774,8 +992,12 @@
     }
 
     function startHearts() {
-      heartInterval = setInterval(spawnHeart, 350);
-      for (let i = 0; i < 8; i++) {
+      const isMobile = window.innerWidth <= 768;
+      const interval = isMobile ? 500 : 350;
+      const initialCount = isMobile ? 5 : 8;
+
+      heartInterval = setInterval(spawnHeart, interval);
+      for (let i = 0; i < initialCount; i++) {
         setTimeout(spawnHeart, i * 150);
       }
     }
@@ -796,10 +1018,14 @@
     }
 
     function startPetals() {
-      for (let i = 0; i < 20; i++) {
+      const isMobile = window.innerWidth <= 768;
+      const petalCount = isMobile ? 12 : 20;
+      const interval = isMobile ? 1800 : 1200;
+
+      for (let i = 0; i < petalCount; i++) {
         setTimeout(spawnPetal, i * 300);
       }
-      petalInterval = setInterval(spawnPetal, 1200);
+      petalInterval = setInterval(spawnPetal, interval);
     }
 
     function stopPetals() {
@@ -807,6 +1033,9 @@
     }
 
     function createStars() {
+      const isMobile = window.innerWidth <= 768;
+      if (isMobile) return; // Skip stars on mobile for better performance
+
       const starCount = 80;
       for (let i = 0; i < starCount; i++) {
         const star = document.createElement("div");
